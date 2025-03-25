@@ -2,16 +2,53 @@ $(function () {
 
   
   $('.slick-box').slick({
-    autoplay: true, // 自動再生
-    autoplaySpeed: 3000, // 3秒ごとにスライド
-    dots: false, // ドットナビゲーションを非表示
-    arrows: false, // 矢印を非表示
-    infinite: true, // 無限ループ
-    speed: 500, // スライドの速度
-    slidesToShow: 1, // 表示するスライド数（中央＋左右少し見える）
-    slidesToScroll: 1, // スクロールするスライド数
-    centerMode: true, // 中央寄せモード
-    centerPadding: '10%', // 両端に少し見切れる幅
+    autoplay: true,
+    autoplaySpeed: 3000,
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: '10%'
+  });
+
+  // 画像の対応リスト
+  const imageMap = {
+    'img/top3-1.png': 'img/IPhone15_128GB.png',
+    'img/top3-2.png': 'img/AQUOSwish4_rev01.jpg',
+    'img/top3-3.png': 'img/iPhoneSE_rev13.jpg'
+  };
+
+  const link = "https://houjinsp-online.com/contact.php"; // モーダル画像のリンク先
+
+  // 画像クリックでモーダル表示
+  $('.slick__item a').on('click', function(event) {
+    event.preventDefault(); // ページ遷移を防ぐ
+
+    let clickedImgSrc = $(this).find('img').attr('src'); // クリックした画像のsrcを取得
+    let modalImgSrc = imageMap[clickedImgSrc]; // 対応するモーダル画像を取得
+
+    if (modalImgSrc) {
+      $('#modal-image').attr('src', modalImgSrc); // モーダル画像を変更
+      $('#modal-image').data('link', link); // 画像にリンクを保存
+      $('.modal').addClass('show'); // モーダルを表示
+    }
+  });
+
+  // モーダル外をクリックで閉じる
+  $('.modal').on('click', function() {
+    $('.modal').removeClass('show');
+  });
+
+  // モーダル画像クリックでリンクへ遷移
+  $('#modal-image').on('click', function(event) {
+    event.stopPropagation(); // モーダルを閉じる処理を阻止
+    let link = $(this).data('link'); // 事前に保存したリンクを取得
+    if (link) {
+      window.location.href = link;
+    }
   });
 
 
