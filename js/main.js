@@ -1,6 +1,8 @@
 $(function () {
 
-  
+  // popular_smartphone_top3
+
+
   $('.slick-box').slick({
     autoplay: true,
     autoplaySpeed: 3000,
@@ -16,24 +18,24 @@ $(function () {
 
   // 画像の対応リスト
   const imageMap = {
-    'img/top3-1.png': 'img/IPhone15_128GB.png',
+    'img/top3-1.png': 'img/IPhone16_128GB.png',
     'img/top3-2.png': 'img/AQUOSwish4_rev01.jpg',
     'img/top3-3.png': 'img/iPhoneSE_rev13.jpg'
   };
 
-  const link = "https://houjinsp-online.com/contact.php"; // モーダル画像のリンク先
+  const link = "https://houjinsp-online.com/contact.php";
 
   // 画像クリックでモーダル表示
   $('.slick__item a').on('click', function(event) {
-    event.preventDefault(); // ページ遷移を防ぐ
+    event.preventDefault(); 
 
-    let clickedImgSrc = $(this).find('img').attr('src'); // クリックした画像のsrcを取得
-    let modalImgSrc = imageMap[clickedImgSrc]; // 対応するモーダル画像を取得
+    let clickedImgSrc = $(this).find('img').attr('src'); 
+    let modalImgSrc = imageMap[clickedImgSrc]; 
 
     if (modalImgSrc) {
-      $('#modal-image').attr('src', modalImgSrc); // モーダル画像を変更
-      $('#modal-image').data('link', link); // 画像にリンクを保存
-      $('.modal').addClass('show'); // モーダルを表示
+      $('#modal-image').attr('src', modalImgSrc); 
+      $('#modal-image').data('link', link); 
+      $('.modal').addClass('show'); 
     }
   });
 
@@ -44,8 +46,8 @@ $(function () {
 
   // モーダル画像クリックでリンクへ遷移
   $('#modal-image').on('click', function(event) {
-    event.stopPropagation(); // モーダルを閉じる処理を阻止
-    let link = $(this).data('link'); // 事前に保存したリンクを取得
+    event.stopPropagation(); 
+    let link = $(this).data('link'); 
     if (link) {
       window.location.href = link;
     }
@@ -53,15 +55,17 @@ $(function () {
 
 
   
+
+  // popular_model
   const $slider = $(".slick-box2");
 
   $slider.slick({
-    infinite: false, // 無限ループを無効化
-    autoplay: false, // 自動スライドなし（手動のみ）
-    arrows: true, // 矢印を表示
+    infinite: false, 
+    autoplay: false, 
+    arrows: true, 
     prevArrow: '<img src="img/prev-arrow.png" class="slick-prev" alt="前へ">',
     nextArrow: '<img src="img/next-arrow.png" class="slick-next" alt="次へ">',
-    dots: false, // ドットナビゲーションなし
+    dots: false, 
     slidesToShow: 1,
     slidesToScroll: 1
   });
@@ -82,42 +86,47 @@ $(function () {
   });
 
   
- // ページ内のリンクをクリックした時に動作する
+
+  // price_simulationのボタンを押したらスムーススクロール
  $('a[href^="#"]').click(function () {
-  // クリックしたaタグのリンクを取得
   let href = $(this).attr("href");
-  // ジャンプ先のid名をセット hrefの中身が#もしくは空欄なら,htmlタグをセット
+  
   let target = $(href == "#" || href == "" ? "html" : href);
-  // ページトップからジャンプ先の要素までの距離を取得
+ 
   let position = target.offset().top;
-  // animateでスムーススクロールを行う   ページトップからpositionだけスクロールする
-  // 600はスクロール速度で単位はミリ秒  swingはイージングのひとつ
+  
   $("html, body").animate({ scrollTop: position }, 600, "swing");
-  // urlが変化しないようにfalseを返す
+  
   return false; 
 });
 
 
 
 // よくあるご質問
-$('.qa-title').on('click', function() {//タイトル要素をクリックしたら
-  var findElm = $(this).next(".qa-box");//直後のアコーディオンを行うエリアを取得し
-  $(findElm).slideToggle();//アコーディオンの上下動作
+$('.qa-title').on('click', function() {
+  var findElm = $(this).next(".qa-box");
+  $(findElm).slideToggle();
     
-  if($(this).hasClass('close')){//タイトル要素にクラス名closeがあれば
-    $(this).removeClass('close');//クラス名を除去し
+  if($(this).hasClass('close')){
+    $(this).removeClass('close');
   }else{
-    $(this).addClass('close');//クラス名closeを付与
+    $(this).addClass('close');
   }
 });
 
+
+
+// 下の固定メニューをスクロールしたら表示
 $(window).on('scroll', function() {
-  if ($(window).scrollTop() > $(window).height()) { // 100vh（1画面分）スクロールしたら
-      $('.fixed_menu').addClass('show'); // メニュー表示
+  if ($(window).scrollTop() > $(window).height()) { 
+      $('.fixed_menu').addClass('show'); 
   } else {
-      $('.fixed_menu').removeClass('show'); // 元の位置に戻す
+      $('.fixed_menu').removeClass('show'); 
   }
 });
+
+
+
 
 
   // スクロール時のイベント
@@ -134,7 +143,7 @@ $(window).on('scroll', function() {
 
       if (scroll > target - windowHeight + 200) {
 
-        // 条件が満たされた場合、要素の不透明度（opacity）を1に設定し、Y軸方向に移動（translateY）させます。
+        
         $(this).css("opacity", "1");
         $(this).css("transform", "translateY(0)");
       }
