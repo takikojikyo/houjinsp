@@ -18,9 +18,9 @@ $(function () {
 
   // 画像の対応リスト
   const imageMap = {
-    'img/top3-1.png': 'img/IPhone16_128GB.png',
-    'img/top3-2.png': 'img/AQUOSwish4_rev01.jpg',
-    'img/top3-3.png': 'img/iPhoneSE_rev13.jpg'
+    'img/top3-1.webp': 'img/IPhone16_128GB.webp',
+    'img/top3-2.webp': 'img/AQUOSwish4_rev01.webp',
+    'img/top3-3.webp': 'img/iPhoneSE_rev13.webp'
   };
 
   const link = "https://houjinsp-online.com/contact.php";
@@ -73,12 +73,12 @@ $(function () {
   // スライドの最後・最初でループさせる処理
   $slider.on("afterChange", function (event, slick, currentSlide) {
     if (currentSlide === 0) {
-      // 最初のスライドで「前へ」ボタンを押したら最後のスライドに移動
+
       $(".slick-prev").on("click", function () {
         $slider.slick("slickGoTo", slick.slideCount - 1);
       });
     } else if (currentSlide === slick.slideCount - 1) {
-      // 最後のスライドで「次へ」ボタンを押したら最初のスライドに移動
+
       $(".slick-next").on("click", function () {
         $slider.slick("slickGoTo", 0);
       });
