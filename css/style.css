@@ -151,7 +151,12 @@ main-visual
 .main-visual{
   margin-bottom: 30px;
 }
-
+.main-visual img {
+  aspect-ratio: 880 / 1750;
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* -----------------------------------------------------------------------------------------------------------------------
 banner_1
