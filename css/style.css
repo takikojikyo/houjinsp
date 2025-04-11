@@ -175,6 +175,7 @@ popular_smartphone_top3
   background-color: #152D79;
   padding: 40px 0;
   color: #fdfdfd;
+  min-height: 600px;
 }
 
 
@@ -205,9 +206,9 @@ margin-bottom: 30px;
   padding: 0 10px;
 }
 .modal {
-  display: flex; /* フレックスボックスを有効にする */
-  justify-content: center; /* 水平方向の中央配置 */
-  align-items: center; /* 垂直方向の中央配置 */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
   position: fixed;
   top: 0;
   left: 0;
@@ -218,14 +219,14 @@ margin-bottom: 30px;
   align-items: center;
   z-index: 999;
 
-  opacity: 0; /* 初期状態では透明 */
-  visibility: hidden; /* 初期状態では非表示 */
+  opacity: 0;
+  visibility: hidden; 
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal.show {
-  opacity: 1; /* 表示 */
-  visibility: visible; /* 表示 */
+  opacity: 1; 
+  visibility: visible; 
 }
 
 .modal-content {
@@ -550,7 +551,7 @@ price_simulation
   position: relative;
 }
 .slick-prev,.slick-next {
-  width: 40px; /* 矢印画像の幅 */
+  width: 40px;
   height: auto;
   position: absolute;
   top: 50%;
@@ -560,11 +561,11 @@ price_simulation
 }
 
 .slick-prev {
-  left: 10px; /* 左矢印の位置 */
+  left: 10px; 
 }
 
 .slick-next {
-  right: 10px; /* 右矢印の位置 */
+  right: 10px; 
 }
 .slick-box2__item img{
   width: 320px;
@@ -607,8 +608,8 @@ margin-bottom: 60px;
 content:"";
   width: 0;
 height: 0;
-border-left: 35px solid transparent;  /* 底辺の半分 */
-border-right: 35px solid transparent; /* 底辺の半分 */
+border-left: 35px solid transparent; 
+border-right: 35px solid transparent; 
 border-bottom: 30px solid #FECF6A;
 transform: translateX(-50%) rotate(180deg);
 position: absolute;
@@ -659,7 +660,7 @@ qa
   
   /*アコーディオンタイトル*/
   .qa-title {
-    position: relative;/*+マークの位置基準とするためrelative指定*/
+    position: relative;
     cursor: pointer;
     font-size:16px;
     padding: 3% 3% 3% 20px;
@@ -695,14 +696,14 @@ qa
     transform: rotate(90deg);
   
   }
-/* 開いたとき（マイナス表示） */
+
 .qa-title.close::after {
-  opacity: 0; /* 縦線を消す */
+  opacity: 0; 
 }
   
-  /*アコーディオンで現れるエリア*/
+  
   .qa-box {
-    display: none;/*はじめは非表示*/
+    display: none;
     margin-left: 20px;
     padding: 3%;
   }
@@ -766,8 +767,8 @@ fixed_menu
 .fixed_menu{
   max-width: 440px;
   margin: 0 auto;
-  opacity: 0; /* 初期状態で非表示 */
-  transform: translateY(100%); /* 下に隠す */
+  opacity: 0; 
+  transform: translateY(100%); 
   position: fixed;
   bottom: 0;
   left: 0;
