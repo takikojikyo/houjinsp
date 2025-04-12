@@ -1,3 +1,12 @@
+
+
+
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
 body{
   font-family: "Noto Sans JP", sans-serif;
   font-optical-sizing: auto;
@@ -65,12 +74,6 @@ img{
 .orange{
   color: #FF7916;
 }
-.en{
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
 
 .optimum_plan_title{
   font-size: 22px;
@@ -128,9 +131,7 @@ header h1 a{
  border-radius: 8px;  
  text-align: center;
 }
-.header_link li a img{
-  width: 28px;
-}
+
 .header_link_1{
   margin-right: 10px;
 }
@@ -145,13 +146,20 @@ header h1 a{
 /* -----------------------------------------------------------------------------------------------------------------------
 main-visual 
 -------------------------------------------------------------*/
-
+.main-visual {
+  aspect-ratio: 440 / 877;
+  width: 100%;
+  max-width: 440px;
+  margin-bottom: 30px;
+  contain-intrinsic-size: 877px;
+  contain: layout; 
+}
 .main-visual img {
   width: 100%;
   height: auto;
   aspect-ratio: 440 / 877;
   display: block;
-  max-width: 440px; /* 追加で明示してみる */
+  max-width: 440px; 
 }
 
 /* -----------------------------------------------------------------------------------------------------------------------
@@ -240,6 +248,7 @@ margin-bottom: 30px;
   width: 100%;
   height: auto;
 }
+
 
 
 /* -----------------------------------------------------------------------------------------------------------------------
@@ -387,9 +396,6 @@ reason
 }
 .reason_title::after{
   background-color: #152D79;
-}
-.reason_title_emphasis{
-  color: #FF7916;
 }
 .reason_list li:not(:last-of-type){
   margin-bottom: 20px;
@@ -728,7 +734,6 @@ qa
   .answer_tex{
     font-size: 14px;
   }
- 
 
   /* -----------------------------------------------------------------------------------------------------------------------
 footer
