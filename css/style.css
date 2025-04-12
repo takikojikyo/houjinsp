@@ -1,6 +1,20 @@
+/* 400 Regular */
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/noto-sans-jp-regular.woff2') format('woff2');
+  font-display: swap;
+}
 
-
-
+/* 700 Bold */
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/noto-sans-jp-700.woff2') format('woff2');
+  font-display: swap;
+}
 
 
 body, html {
@@ -9,9 +23,6 @@ body, html {
 }
 body{
   font-family: "Noto Sans JP", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
   color: #333333;
   background: #EAF7FD;
 }
