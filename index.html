@@ -9,13 +9,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Houjinsp Website">
   <style>
+    header {
+      height: 70px;
+    }
+
+    header .wrapper {
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      line-height: 1;
+    }
+
+    header h1 a {
+      display: inline-block;
+    }
+
+    .header_link {
+      display: flex;
+    }
+
+    .header_link li a {
+      display: inline-block;
+      width: 75px;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .header_link_1 {
+      margin-right: 10px;
+    }
+
+    .header_link_1 a {
+      background-color: #fdfdfd;
+      border: 3px solid #FF7916;
+    }
+
+    .header_link_2 a {
+      border: 3px solid #FF7916;
+      background-color: #FF7916;
+    }
+
     .main-visual {
       aspect-ratio: 440 / 877;
       width: 100%;
       max-width: 440px;
       margin-bottom: 30px;
       contain-intrinsic-size: 877px;
-      contain: layout; 
+      contain: layout;
     }
 
     .main-visual img {
@@ -27,25 +72,23 @@
   </style>
 
   <!-- googleフォント -->
-<!-- Preconnect -->
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Preload WOFF2 -->
-<link rel="preload" href="https://fonts.gstatic.com/s/notosansjp/v16/DdBjsyOvw9GJHau3UwRrDlhHklM4Gw.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Preload WOFF2 font file -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/notosansjp/v16/DdBjsyOvw9GJHau3UwRrDlhHklM4Gw.woff2" as="font"
+    type="font/woff2" crossorigin="anonymous">
 
-<!-- 非ブロックで読み込む -->
-<link 
-  rel="stylesheet" 
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
-  media="print"
-  onload="this.media='all'">
+  <!-- Lazy-load stylesheet for better LCP -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
+    media="print" onload="this.media='all'">
 
-<noscript>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" 
-    rel="stylesheet">
-</noscript>
+  <!-- Fallback for no-JS -->
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  </noscript>
+
 
 
 
@@ -425,7 +468,7 @@
                   </li>
                 </ul>
                 <a class="CV_list_btn CV_list_btn1" href="tel:0120-538-172">
-                  <img class="CV_list_btn_img1" src="img/tel.png" alt="電話のアイコン">
+                  <img class="CV_list_btn_img1" src="img/tel.webp" alt="電話のアイコン">
                   <p>0120-538-172</p>
                   <img class="CV_list_btn_img2" src="img/arrow_o.png" alt="矢印のアイコン">
                 </a>
@@ -433,7 +476,7 @@
               <li class="CV_mail">
                 <h4 class="CV_title"><span class="emphasis">メール</span>で無料簡単お見積り</h4>
                 <a class="CV_list_btn CV_list_btn2" href="https://houjinsp-online.com/contact.php">
-                  <img class="CV_list_btn_img1" src="img/mail.png" alt="メールのアイコン">
+                  <img class="CV_list_btn_img1" src="img/mail.webp" alt="メールのアイコン">
                   <p>お見積りフォーム</p>
                   <img class="CV_list_btn_img2" src="img/arrow_w.png" alt="矢印のアイコン">
                 </a>
@@ -505,7 +548,7 @@
                   </li>
                 </ul>
                 <a class="CV_list_btn CV_list_btn1" href="tel:0120-538-172">
-                  <img class="CV_list_btn_img1" src="img/tel.png" alt="電話のアイコン">
+                  <img class="CV_list_btn_img1" src="img/tel.webp" alt="電話のアイコン">
                   <p>0120-538-172</p>
                   <img class="CV_list_btn_img2" src="img/arrow_o.png" alt="矢印のアイコン">
                 </a>
@@ -513,7 +556,7 @@
               <li class="CV_mail">
                 <h4 class="CV_title"><span class="emphasis">メール</span>で無料簡単お見積り</h4>
                 <a class="CV_list_btn CV_list_btn2" href="https://houjinsp-online.com/contact.php">
-                  <img class="CV_list_btn_img1" src="img/mail.png" alt="メールのアイコン">
+                  <img class="CV_list_btn_img1" src="img/mail.webp" alt="メールのアイコン">
                   <p>お見積りフォーム</p>
                   <img class="CV_list_btn_img2" src="img/arrow_w.png" alt="矢印のアイコン">
                 </a>
@@ -609,7 +652,7 @@
                   </li>
                 </ul>
                 <a class="CV_list_btn CV_list_btn1" href="tel:0120-538-172">
-                  <img class="CV_list_btn_img1" src="img/tel.png" alt="電話のアイコン">
+                  <img class="CV_list_btn_img1" src="img/tel.webp" alt="電話のアイコン">
                   <p>0120-538-172</p>
                   <img class="CV_list_btn_img2" src="img/arrow_o.png" alt="矢印のアイコン">
                 </a>
@@ -617,7 +660,7 @@
               <li class="CV_mail">
                 <h4 class="CV_title"><span class="emphasis">メール</span>で無料簡単お見積り</h4>
                 <a class="CV_list_btn CV_list_btn2" href="https://houjinsp-online.com/contact.php">
-                  <img class="CV_list_btn_img1" src="img/mail.png" alt="メールのアイコン">
+                  <img class="CV_list_btn_img1" src="img/mail.webp" alt="メールのアイコン">
                   <p>お見積りフォーム</p>
                   <img class="CV_list_btn_img2" src="img/arrow_w.png" alt="矢印のアイコン">
                 </a>
@@ -710,11 +753,11 @@
             <li>
               <div>
                 <div class="qa-title">
-                  <span class="en qa_q">Q</span>
+                  <span class="qa_q">Q</span>
                   <p>番号はそのまま使えますか？</p>
                 </div>
                 <div class="qa-box">
-                  <p class="answer_title"><span class="en qa_a">A</span>使えます。</p>
+                  <p class="answer_title"><span class="qa_a">A</span>使えます。</p>
                   <p class="answer_tex">ご利用の携帯番号はそのままご利用いただけます。（乗り換え・機種変更が可能です）</p>
                 </div>
               </div>
@@ -722,11 +765,11 @@
             <li>
               <div>
                 <div class="qa-title">
-                  <span class="en qa_q">Q</span>
+                  <span class="qa_q">Q</span>
                   <p>納期はどのくらいですか？</p>
                 </div>
                 <div class="qa-box">
-                  <p class="answer_title"><span class="en qa_a">A</span>最短翌々日よりご利用が可能です。</p>
+                  <p class="answer_title"><span class="qa_a">A</span>最短翌々日よりご利用が可能です。</p>
                   <p class="answer_tex">ただし、在庫状況や地域によっては、お時間をいただく場合がございます。</p>
                 </div>
               </div>
@@ -734,11 +777,11 @@
             <li>
               <div>
                 <div class="qa-title">
-                  <span class="en qa_q">Q</span>
+                  <span class="qa_q">Q</span>
                   <p>どのような機種がありますか？</p>
                 </div>
                 <div class="qa-box">
-                  <p class="answer_title"><span class="en qa_a">A</span>防水、耐衝撃など、法人様にピッタリの機種がご利用できます。</p>
+                  <p class="answer_title"><span class="qa_a">A</span>防水、耐衝撃など、法人様にピッタリの機種がご利用できます。</p>
                   <p class="answer_tex">様々な機能を備えた機種を扱っております。ご希望がある際は担当員までお申し付けください。</p>
                 </div>
               </div>
@@ -747,12 +790,12 @@
             <li>
               <div>
                 <div class="qa-title">
-                  <span class="en qa_q">Q</span>
+                  <span class="qa_q">Q</span>
                   <p>見積もりだけでもいいですか？</p>
                 </div>
 
                 <div class="qa-box">
-                  <p class="answer_title"><span class="en qa_a">A</span>問題ございません。</p>
+                  <p class="answer_title"><span class="qa_a">A</span>問題ございません。</p>
                   <p class="answer_tex">当サイト限定の、特別価格をご提案いたします。</p>
                 </div>
               </div>
@@ -760,12 +803,12 @@
             <li>
               <div>
                 <div class="qa-title">
-                  <span class="en qa_q">Q</span>
+                  <span class="qa_q">Q</span>
                   <p>外国人技能実習生用の携帯電話も契約できますか？</p>
                 </div>
 
                 <div class="qa-box">
-                  <p class="answer_title"><span class="en qa_a">A</span>法人名義で通常よりお得にご契約いただけます。</p>
+                  <p class="answer_title"><span class="qa_a">A</span>法人名義で通常よりお得にご契約いただけます。</p>
                   <p class="answer_tex">当サイト限定の、特別価格をご提案いたします。</p>
                 </div>
               </div>
@@ -803,7 +846,7 @@
                   </li>
                 </ul>
                 <a class="CV_list_btn CV_list_btn1" href="tel:0120-538-172">
-                  <img class="CV_list_btn_img1" src="img/tel.png" alt="電話のアイコン">
+                  <img class="CV_list_btn_img1" src="img/tel.webp" alt="電話のアイコン">
                   <p>0120-538-172</p>
                   <img class="CV_list_btn_img2" src="img/arrow_o.png" alt="矢印のアイコン">
                 </a>
@@ -811,7 +854,7 @@
               <li class="CV_mail">
                 <h4 class="CV_title"><span class="emphasis">メール</span>で無料簡単お見積り</h4>
                 <a class="CV_list_btn CV_list_btn2" href="https://houjinsp-online.com/contact.php">
-                  <img class="CV_list_btn_img1" src="img/mail.png" alt="メールのアイコン">
+                  <img class="CV_list_btn_img1" src="img/mail.webp" alt="メールのアイコン">
                   <p>お見積りフォーム</p>
                   <img class="CV_list_btn_img2" src="img/arrow_w.png" alt="矢印のアイコン">
                 </a>
