@@ -1,89 +1,255 @@
 $(function () {
 
+
+function loadSlickAssets(callback) {
+  // すでに読み込み済みならスキップ
+  if (window.slickLoaded) {
+    callback();
+    return;
+  }
+  window.slickLoaded = true;
+
+  // CSSを動的に読み込む
+  const css1 = document.createElement('link');
+  css1.rel = 'stylesheet';
+  css1.href = 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css';
+  document.head.appendChild(css1);
+
+  const css2 = document.createElement('link');
+  css2.rel = 'stylesheet';
+  css2.href = 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css';
+  document.head.appendChild(css2);
+
+  // JS読み込み
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js';
+  script.onload = () => {
+    callback(); 
+  };
+  document.body.appendChild(script);
+}
+
+function initSlickSliders() {
+  const $box1 = $('.popular_smartphone_top3 .slick-box');
+  if ($box1.length && !$box1.hasClass('slick-initialized')) {
+    $box1.slick({
+      autoplay: true,
+      autoplaySpeed: 3000,
+      dots: false,
+      arrows: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      centerMode: true,
+      centerPadding: '10%'
+    });
+  }
+
+  $('.popular_model .slick-box2').each(function () {
+    const $el = $(this);
+    if (!$el.hasClass('slick-initialized')) {
+      $el.slick({
+        infinite: false,
+        autoplay: false,
+        arrows: true,
+        prevArrow: '<img src="img/prev-arrow.png" class="slick-prev" alt="前へ">',
+        nextArrow: '<img src="img/next-arrow.png" class="slick-next" alt="次へ">',
+        dots: false,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      });
+    }
+  });
+}
+
+// 例えばスクロールしたタイミングで呼ぶ
+let slickTriggered = false;
+window.addEventListener('scroll', () => {
+  const section = document.querySelector('.popular_smartphone_top3');
+  if (!section || slickTriggered) return;
+
+  const rect = section.getBoundingClientRect();
+  if (rect.top < window.innerHeight) {
+    slickTriggered = true;
+    loadSlickAssets(initSlickSliders); // 遅延読み込みして初期化
+  }
+});
+
+function initSlickSliders() {
+  // popular_smartphone_top3 初期化
+  const $box1 = $('.popular_smartphone_top3 .slick-box');
+  if ($box1.length && !$box1.hasClass('slick-initialized')) {
+    $box1.slick({
+      autoplay: true,
+      autoplaySpeed: 3000,
+      dots: false,
+      arrows: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      centerMode: true,
+      centerPadding: '10%'
+    });
+
+    // モーダル処理をここで再登録
+    const imageMap = {
+      'img/top3-1.webp': 'img/IPhone16_128GB.webp',
+      'img/top3-2.webp': 'img/AQUOSwish4_rev01.webp',
+      'img/top3-3.webp': 'img/iPhoneSE_rev13.webp'
+    };
+
+    const link = "https://houjinsp-online.com/contact.php";
+
+    $('.slick__item a').on('click', function (event) {
+      event.preventDefault();
+      let clickedImgSrc = $(this).find('img').attr('src');
+      let modalImgSrc = imageMap[clickedImgSrc];
+
+      if (modalImgSrc) {
+        $('#modal-image').attr('src', modalImgSrc);
+        $('#modal-image').data('link', link);
+        $('.modal').addClass('show');
+      }
+    });
+
+    $('.modal').on('click', function () {
+      $('.modal').removeClass('show');
+    });
+
+    $('#modal-image').on('click', function (event) {
+      event.stopPropagation();
+      let link = $(this).data('link');
+      if (link) {
+        window.location.href = link;
+      }
+    });
+  }
+
+  // popular_model 初期化
+  $('.popular_model .slick-box2').each(function () {
+    const $slider = $(this);
+
+    if (!$slider.hasClass('slick-initialized')) {
+      $slider.slick({
+        infinite: false,
+        autoplay: false,
+        arrows: true,
+        prevArrow: '<img src="img/prev-arrow.png" class="slick-prev" alt="前へ">',
+        nextArrow: '<img src="img/next-arrow.png" class="slick-next" alt="次へ">',
+        dots: false,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      });
+
+      // スライドの最初/最後にループ処理を追加
+      $slider.on("afterChange", function (event, slick, currentSlide) {
+        const $prev = $(this).closest('.popular_model_item').find('.slick-prev');
+        const $next = $(this).closest('.popular_model_item').find('.slick-next');
+
+        // 一旦前のイベント削除（重複防止）
+        $prev.off('click.loop');
+        $next.off('click.loop');
+
+        if (currentSlide === 0) {
+          $prev.on("click.loop", function () {
+            $slider.slick("slickGoTo", slick.slideCount - 1);
+          });
+        } else if (currentSlide === slick.slideCount - 1) {
+          $next.on("click.loop", function () {
+            $slider.slick("slickGoTo", 0);
+          });
+        }
+      });
+    }
+  });
+}
+
   // popular_smartphone_top3
 
 
-  $('.slick-box').slick({
-    autoplay: true,
-    autoplaySpeed: 3000,
-    dots: false,
-    arrows: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: '10%'
-  });
+  // $('.popular_smartphone_top3 .slick-box').slick({
+  //   autoplay: true,
+  //   autoplaySpeed: 3000,
+  //   dots: false,
+  //   arrows: false,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   centerMode: true,
+  //   centerPadding: '10%'
+  // });
 
-  // 画像の対応リスト
-  const imageMap = {
-    'img/top3-1.webp': 'img/IPhone16_128GB.webp',
-    'img/top3-2.webp': 'img/AQUOSwish4_rev01.webp',
-    'img/top3-3.webp': 'img/iPhoneSE_rev13.webp'
-  };
+  // // 画像の対応リスト
+  // const imageMap = {
+  //   'img/top3-1.webp': 'img/IPhone16_128GB.webp',
+  //   'img/top3-2.webp': 'img/AQUOSwish4_rev01.webp',
+  //   'img/top3-3.webp': 'img/iPhoneSE_rev13.webp'
+  // };
 
-  const link = "https://houjinsp-online.com/contact.php";
+  // const link = "https://houjinsp-online.com/contact.php";
 
-  // 画像クリックでモーダル表示
-  $('.slick__item a').on('click', function(event) {
-    event.preventDefault(); 
+  // // 画像クリックでモーダル表示
+  // $('.slick__item a').on('click', function(event) {
+  //   event.preventDefault(); 
 
-    let clickedImgSrc = $(this).find('img').attr('src'); 
-    let modalImgSrc = imageMap[clickedImgSrc]; 
+  //   let clickedImgSrc = $(this).find('img').attr('src'); 
+  //   let modalImgSrc = imageMap[clickedImgSrc]; 
 
-    if (modalImgSrc) {
-      $('#modal-image').attr('src', modalImgSrc); 
-      $('#modal-image').data('link', link); 
-      $('.modal').addClass('show'); 
-    }
-  });
+  //   if (modalImgSrc) {
+  //     $('#modal-image').attr('src', modalImgSrc); 
+  //     $('#modal-image').data('link', link); 
+  //     $('.modal').addClass('show'); 
+  //   }
+  // });
 
-  // モーダル外をクリックで閉じる
-  $('.modal').on('click', function() {
-    $('.modal').removeClass('show');
-  });
+  // // モーダル外をクリックで閉じる
+  // $('.modal').on('click', function() {
+  //   $('.modal').removeClass('show');
+  // });
 
-  // モーダル画像クリックでリンクへ遷移
-  $('#modal-image').on('click', function(event) {
-    event.stopPropagation(); 
-    let link = $(this).data('link'); 
-    if (link) {
-      window.location.href = link;
-    }
-  });
+  // // モーダル画像クリックでリンクへ遷移
+  // $('#modal-image').on('click', function(event) {
+  //   event.stopPropagation(); 
+  //   let link = $(this).data('link'); 
+  //   if (link) {
+  //     window.location.href = link;
+  //   }
+  // });
 
 
   
 
-  // popular_model
-  const $slider = $(".slick-box2");
+  // // popular_model
+  // const $slider = $(".popular_model .slick-box2");
 
-  $slider.slick({
-    infinite: false, 
-    autoplay: false, 
-    arrows: true, 
-    prevArrow: '<img src="img/prev-arrow.png" class="slick-prev" alt="前へ">',
-    nextArrow: '<img src="img/next-arrow.png" class="slick-next" alt="次へ">',
-    dots: false, 
-    slidesToShow: 1,
-    slidesToScroll: 1
-  });
+  // $slider.slick({
+  //   infinite: false, 
+  //   autoplay: false, 
+  //   arrows: true, 
+  //   prevArrow: '<img src="img/prev-arrow.png" class="slick-prev" alt="前へ">',
+  //   nextArrow: '<img src="img/next-arrow.png" class="slick-next" alt="次へ">',
+  //   dots: false, 
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1
+  // });
 
-  // スライドの最後・最初でループさせる処理
-  $slider.on("afterChange", function (event, slick, currentSlide) {
-    if (currentSlide === 0) {
+  // // スライドの最後・最初でループさせる処理
+  // $slider.on("afterChange", function (event, slick, currentSlide) {
+  //   if (currentSlide === 0) {
 
-      $(".slick-prev").on("click", function () {
-        $slider.slick("slickGoTo", slick.slideCount - 1);
-      });
-    } else if (currentSlide === slick.slideCount - 1) {
+  //     $(".slick-prev").on("click", function () {
+  //       $slider.slick("slickGoTo", slick.slideCount - 1);
+  //     });
+  //   } else if (currentSlide === slick.slideCount - 1) {
 
-      $(".slick-next").on("click", function () {
-        $slider.slick("slickGoTo", 0);
-      });
-    }
-  });
+  //     $(".slick-next").on("click", function () {
+  //       $slider.slick("slickGoTo", 0);
+  //     });
+  //   }
+  // });
 
   
 

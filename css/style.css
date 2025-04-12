@@ -3,7 +3,7 @@
   font-family: 'Noto Sans JP';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/noto-sans-jp-regular.woff2') format('woff2');
+  src: url('../fonts/noto-sans-jp-v53-latin-regular.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -12,7 +12,7 @@
   font-family: 'Noto Sans JP';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/noto-sans-jp-700.woff2') format('woff2');
+  src: url('../fonts/noto-sans-jp-v53-latin-700.woff2') format('woff2');
   font-display: swap;
 }
 
