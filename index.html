@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="preload" as="image" href="img/TOP.avif" type="image/avif" fetchpriority="high">
   <title>法人スマホ Online</title>
   <link rel="icon" href="img/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +34,7 @@
   </noscript>
 
 
-  <link rel="preload" as="image" href="img/TOP.avif" type="image/avif" fetchpriority="high">
+
   <!-- リセットCSS -->
   <style>
     html {
@@ -295,7 +296,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
   </noscript>
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css"></noscript>
 </head>
 
 <body>
